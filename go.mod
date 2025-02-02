@@ -1,4 +1,4 @@
-module github.com/nauthera/cobra-oauth2
+module github.com/cloud-linker/cobra-oauth2
 
 go 1.22.5
 

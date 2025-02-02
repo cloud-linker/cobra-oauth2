@@ -18,6 +18,7 @@ type Config struct {
 	DeviceAuthorizationEndpoint string                  `json:"auth_url" validate:"required,url"`
 	TokenEndpoint               string                  `json:"token_url" validate:"required,url"`
 	Scopes                      []string                `json:"scopes" validate:"required,min=1,dive,required"`
+	Audience                    string                  `json:"audience,omitempty"`
 	StorageProvider             storage.StorageProvider `json:"-"` // not validated
 }
 
@@ -42,6 +43,12 @@ func WithClientID(clientId string) Option {
 func WithClientSecret(clientSecret string) Option {
 	return func(c *Config) {
 		c.ClientSecret = clientSecret
+	}
+}
+
+func WithAudience(audience string) Option {
+	return func(c *Config) {
+		c.Audience = audience
 	}
 }
 
